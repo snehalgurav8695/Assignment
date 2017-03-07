@@ -1,0 +1,145 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Registration.aspx.cs" Inherits="Registration" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   <style>
+       .lable{
+           text-align:right;
+
+       }
+     
+   </style>
+    <title>Registration</title>
+    <script>
+        
+                    function reloadPage() {
+                        window.location.reload()
+                    }
+
+          
+    </script>
+</head>
+<body>
+    <center>
+    <form id="form1" runat="server">
+    <div>
+
+    <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="Registration Form" ></asp:Label>
+        <br />
+    
+        <table style="width:49%;" runat="server" >
+            <tr>
+                <td class="auto-style1 lable" >
+                    <asp:Label ID="Label2" runat="server" Text="Username"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="usernmtxt" runat="server" Width="200px" required></asp:TextBox>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="auto-style1 lable">
+                    <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="passwordtxt" runat="server" TextMode="Password" Width="180px" required></asp:TextBox>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="auto-style1 lable">
+                    <asp:Label ID="Label4" runat="server" Text="Confirm Password" ></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="confrmpasstxt" TextMode="Password" runat="server" Width="180px" required></asp:TextBox>
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="passwordtxt" ControlToValidate="confrmpasstxt" ErrorMessage="*Password doesn't match" ForeColor="Red"></asp:CompareValidator>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="auto-style1 lable">
+                    <asp:Label ID="Label5" runat="server" Text="First Name"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="fnamtxt" runat="server" Width="200px" required></asp:TextBox>
+                </td>
+                
+
+            </tr>
+            <tr>
+                <td class="auto-style1 lable">
+                    <asp:Label ID="Label6" runat="server" Text="Last Name"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="lnametxt" runat="server" Width="200px" required></asp:TextBox>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="auto-style1 lable">
+                    <asp:Label ID="Label7" runat="server" Text="Email"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="emailtxt" runat="server"  Width="200px" required></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="emailtxt" ErrorMessage="*Invalid email id" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="auto-style1 lable">
+                    <asp:Label ID="Label8" runat="server" Text="Phone No"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="phnmtxt" runat="server" Width="200px" required MaxLength="10"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="phnmtxt" ErrorMessage="* Invalid phone no" ForeColor="Red" ValidationExpression="^[7-9][0-9]{9}$"></asp:RegularExpressionValidator>
+                </td>
+                
+            </tr>
+            <tr> 
+                <td class="auto-style1 lable">
+                    <asp:Label ID="Label9" runat="server" Text="Location"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="locationtxt" runat="server" Width="200px" required></asp:TextBox>
+                </td>
+                
+            </tr>
+            <tr>
+                      <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style2">
+                    <asp:Button ID="savebtn" runat="server" Text="Save" OnClick="savebtn_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="resetbtn" runat="server" Text="Reset" />
+                </td>
+                
+            </tr>
+           
+        </table>
+            </div>
+
+
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataSourceID="Registrationdata" OnRowEditing="GridView1_RowEditing" OnRowDeleting="GridView1_RowDeleting" Width="535px" OnPageIndexChanging="GridView1_PageIndexChanging">
+            <Columns>
+                <asp:BoundField DataField="FIRSTNAME" HeaderText="FIRSTNAME" SortExpression="FIRSTNAME" />
+                <asp:BoundField DataField="LASTNAME" HeaderText="LASTNAME" SortExpression="LASTNAME" />
+                <asp:BoundField DataField="EMAIL" HeaderText="EMAIL" SortExpression="EMAIL" />
+                <asp:BoundField DataField="PHONENO" HeaderText="PHONENO" SortExpression="PHONENO" />
+                <asp:CommandField ShowEditButton="true"  ShowDeleteButton="true"/>
+            </Columns>
+            <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
+            <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
+            <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
+            <RowStyle BackColor="White" ForeColor="#003399" />
+            <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+            <SortedAscendingCellStyle BackColor="#EDF6F6" />
+            <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
+            <SortedDescendingCellStyle BackColor="#D6DFDF" />
+            <SortedDescendingHeaderStyle BackColor="#002876" />
+        </asp:GridView>
+        <!--<asp:SqlDataSource ID="Registrationdata" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT FIRSTNAME, LASTNAME, EMAIL, PHONENO FROM REGISTRATION"></asp:SqlDataSource>-->
+
+    </form>
+</center>
+    </body>
+</html>
