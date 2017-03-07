@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+
+class Demo
+{
+	public static void main(String args[])throws Exception
+	{
+		BufferedReader b=new BufferedReader(new InputStreamReader(System.in));
+		String string=b.readLine();
+		String str=" ",s=" ";
+		String []str1=new String[50];
+		String []s1=new String[50];
+		if(string.indexOf(".")<string.indexOf("?"))
+		{
+			str = string.substring(0, string.indexOf("."));
+			s=string.substring((string.indexOf(".")+1),string.indexOf("?"));
+			str1=str.split(" ");
+			s1=s.split(" ");
+			
+		}
+		else if(string.indexOf(".")>string.indexOf("?"))
+		{
+			str = string.substring(0, string.indexOf("?"));
+			s=string.substring((string.indexOf("?")+1),string.indexOf("."));
+			str1=str.split(" ");
+			s1=s.split(" ");
+		}
+		if(str1.length>s1.length)
+		{
+			System.out.println(str1.length);
+		}
+		else
+		{
+			System.out.println(s1.length);
+		}
+		
+		
+	}
+}
