@@ -1,0 +1,4 @@
+SELECT Department.dname "Department Name",   
+COUNT(*) "Number of Employee"   
+FROM  employee2,Department where Department.DeptNo = employee2.DeptNo
+GROUP BY Department.dname; 
